@@ -35,7 +35,6 @@ std::string readUntilAndTrim(std::string & str, char symbol)
 //--------------------------------------------------------------------------------------
 Cipher::Cipher()
 {
-
 }
 //--------------------------------------------------------------------------------------
 std::string Cipher::encodeVigenere(const std::string & data, const std::string & key) const
@@ -77,7 +76,7 @@ std::string Cipher::decodeAtbash(const std::string & data) const
 
   for (const char c : upperedData)
   {
-    if (isSymbolOutOfAlphabet(c) || c == 'N')
+    if (isSymbolOutOfAlphabet(c) || c == 'N') // middle of alphabet
     {
       result += c;
       continue;
@@ -254,7 +253,7 @@ void Cipher::fromA1Z26StringToVector(std::string data, std::vector<std::vector<i
     std::vector<int> a1z26Word;
     std::string word = readUntilAndTrim(data, ' ');
 
-    while (word.empty() != true)
+    while (word.empty() == false)
     {
       auto number = readUntilAndTrim(word, '-');
       a1z26Word.push_back(std::stoi(number) + l_beginOfAlphabet - 1);
